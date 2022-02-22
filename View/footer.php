@@ -1,13 +1,13 @@
 <section id='ns/foote' class='text-center footer2' style="background-color: rgb(250, 215, 227);">
   <div class="container">
-    <div class="col-md-12 row">
+    <div class="col-md-12 row trabaja">
       <div class="col-md-4">
-        <h3>FORMAS DE PAGO</h3>
+        <h3 class="h4">FORMAS DE PAGO</h3>
         <p>Tarjetas Crédito / Débito</p>
         <p>Transferencia bancaria</p>
       </div>
 	<div class="col-md-4">
-	<h3>CONTACTO</h3>
+	<h3 class="h4">CONTACTO</h3>
 	<p>joyerias_zb@gmail.com</p>
 	<p>(011) 1428 – 0267</P>
 	<p> <a href="View/trabajo.php" target="new"><h3 class="h5 trabajo">Trabajá con nosotros</h3></p></a>
