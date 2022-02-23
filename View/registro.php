@@ -7,7 +7,7 @@
 ?>
 <body class="fondo-color">
   <div class="text-center">
-    <label for="" class="h1 bb3 mt-3">Iniciar Sesión</label>
+    <label for="" class="h1 bb3 mt-3">Registro </label>
   </div>
   <section id="login" class="">
     <div class="container col-md-12 text-center m-auto">
@@ -25,9 +25,17 @@
             <input _ngcontent-c0="" class="password ng-untouched ng-pristine ng-invalid" id="password" name="password"
               required="" type="password">
           </div>
+          <div>
+            <label _ngcontent-c0="" for="usuario" class="h3">email</label>
+            <input _ngcontent-c0="" class="usuario ng-untouched ng-pristine ng-invalid" id="email" maxlength="256"
+              name="usuario" required="" type="email">
+          </div>
           <div _ngcontent-c0="" class="mt-4">
             <button class="btn btn-success">Log in</button>
             <a href="../" class="btn btn-success">Regresar</a>
+          </div>
+          <div>
+            che
           </div>
         </form>
       </div>

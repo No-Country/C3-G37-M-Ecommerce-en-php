@@ -15,9 +15,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contacto.php">Contacto</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
-                </li>
+                <?php
+                    session_start();
+                    if (isset($_SESSION["usuario"])){
+                      echo '<li class="nav-item">
+                              <a class="nav-link" href="../Controller/salir.php">'.ucfirst($_SESSION["usuario"]).' Salir</a>
+                          </li>';
+                    }else{
+                      echo '<li class="nav-item">
+                              <a class="nav-link" href="view/login.php">Login</a>
+                          </li>';
+                      echo '<li class="nav-item">
+                              <a class="nav-link" href="view/registrarse.php">Registrarse</a>
+                          </li>';
+                    }
+                ?>
             </ul>
         </div>
     </div>

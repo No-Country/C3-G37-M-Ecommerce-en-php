@@ -38,17 +38,19 @@
                     echo '<div class="card col-12 col-m-6 col-lg-3 categorias prod card_p">
                         <h5 class="card-header"></h5>
                         <div class="card-body m-1 p-1">
-                        <a href="View/prod-individual.php?idp='.$pro->id_producto.'"> <img src="./Assets/img/'.$nomimg.'.jpg" style="width: 280px; height: 200px;" class="hr3 hr1"></a>
-                            <h5 class="card-title">'.$pro->nombre.'</h5>
+                         <a href="View/prod-individual.php?idp='.$pro->id_producto.'"> <img src="./Assets/img/'.$nomimg.'.jpg" style="" class="hr3 hr1 img-fluid"></a>
+                            <h3 class="card-title">'.$pro->nombre.'</h3>
                             <p class="card-text">Materiales:'.$pro->materialidad.' </p>
                             <p class="card-text">Colores:'.$pro->color.' </p>
-                            <a href="View/prod-individual.php?idp='.$pro->id_producto.'" class="btn btn-primary">Comprar</a><label> '.$pro->precio.'</label> 
+                            <p class"h3 t3"><label class="precio">$'.$pro->precio.' </label></p>
+                            <a href="View/prod-individual.php?idp='.$pro->id_producto.'" class="btn btn-primary">Comprar</a> 
                         </div>
                     </div>';
                 }
                 echo '</div>';
         ?>
         </div>
+        
     </div>
 </body>
 </html>
