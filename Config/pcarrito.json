@@ -1,0 +1,8 @@
+$a_carrito = [
+	1=>
+	[
+        'id_p' => 18,
+		'nombre'=> 'Aretes Brisa',
+		'precio' => '9.000,00',
+   ],
+];

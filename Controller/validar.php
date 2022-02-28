@@ -13,9 +13,11 @@
       session_start();
       $_SESSION["usuario"]=$u;
       echo 'esta registrado';
-      header("Location: ../Model/app/index.php");
+      if ($_SESSION["usuario"] == "admin") {
+        header("Location: ../Model/app/index.php");
     }else{
       header("Location: ../");
+    }
   }  
   // include("../dbml.php");
   // $dbml = new dbManager("usuarios","id");
