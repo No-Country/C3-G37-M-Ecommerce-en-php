@@ -1,5 +1,6 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <div class="container todas">
-    <div class="text-center"> 
+    <div class="text-center">
         <?php
         echo '<label class="bb2 h2 m-5">';
         if (isset($_GET["idcat"])) {
@@ -33,23 +34,23 @@
                         <h3 class="card-title">' . $pro->nombre . '</h3>
                         <p class="card-text">Materiales:' . $pro->materialidad . ' </p>
                         <p class="card-text" id="colores";>';
-                        $cadena = $pro->color;
-                        $separador = ' ';
-                        $separada = explode($separador, $cadena);
-                        for ($i=0; $i <= count($separada)-1; $i++) { 
-                            echo '<img src="./Assets/img/colores/'.$separada[$i].'.jpg" style="width: 25px; height: 25px;"  class="m-1" alt="'.$separada[$i].'">';
-                        }
-                        echo '
-                        </p>
-                        <p class"h3 t3"><label class="precio">Precio: $' . $pro->precio . ' </label></p>
-                        <p>
-                        <a href="" class="btn btn-success">Ver</a>
-                        <a href="View/prod-individual.php?idp=' . $pro->id_producto . '" class="btn btn-primary">Añadir carrito</a> 
-                        </p>
-                    </div>
-                </div>';
+            $cadena = $pro->color;
+            $separador = ' ';
+            $separada = explode($separador, $cadena);
+            for ($i = 0; $i <= count($separada) - 1; $i++) {
+                echo '<img src="./Assets/img/colores/' . $separada[$i] . '.jpg" style="width: 25px; height: 25px;"  class="m-1" alt="' . $separada[$i] . '">';
+            }
+            echo '
+                </p>
+                <p class"h3 t3"><label class="precio">Precio: $' . $pro->precio . ' </label></p>
+                <p>
+                <a href="View/prod-individual.php?idp=' . $pro->id_producto . '" class="btn btn-primary">Detalle</a>
+                <a href="View/prod-individual.php?idp=' . $pro->id_producto . '" class="btn btn-success">Añadir carrito</a> 
+                </p>
+            </div>
+        </div>';
         }
-        echo '</div>';
         ?>
     </div>
 </div>
+<script src="../Assets/js/app.js"></script>

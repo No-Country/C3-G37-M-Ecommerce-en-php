@@ -1,9 +1,10 @@
 <?php
   include('../view/dbmlController.php');
   include('../view/productoController.php');
+  if ((isset($_POST["usuario"])) && (isset($_POST["password"]))) {
     $u = $_POST["usuario"];
     $p = $_POST["password"];
-  $dbml = new dbManager("usuario","id_usuario");
+    $dbml = new dbManager("usuario","id_usuario");
     $dbml->select();
     $dbml->where('usuario','=',$u);
     var_dump($dbml);
@@ -15,8 +16,11 @@
       echo 'esta registrado';
       if ($_SESSION["usuario"] == "admin") {
         header("Location: ../Model/app/index.php");
+      }else{
+        header("Location: ../");
+      }
     }else{
-      header("Location: ../");
+      header("Location: ../view/login.php?error=c");
     }
   }  
   // include("../dbml.php");
@@ -31,4 +35,3 @@
   // }else{
   //   header("Location: ../sections/login.php");
   exit();
-?>

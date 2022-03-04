@@ -4,7 +4,6 @@
     <?php
         include ('head.php');
         include ('navbar_m.php');
-        
     ?>
     <body>
           <main>

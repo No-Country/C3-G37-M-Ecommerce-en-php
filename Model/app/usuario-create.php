@@ -14,7 +14,7 @@ $email_err = "";
 
 
 // Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (($_SERVER["REQUEST_METHOD"] == "POST")) {
     $usuario = trim($_POST["usuario"]);
     $contrasenia = trim($_POST["contrasenia"]);
     $email = trim($_POST["email"]);
@@ -32,15 +32,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         error_log($e->getMessage());
         exit('Something weird happened'); //something a user can understand
     }
-
-    $vars = parse_columns('usuario', $_POST);
-    $stmt = $pdo->prepare("INSERT INTO usuario (usuario,contrasenia,email) VALUES (?,?,?)");
-
-    if ($stmt->execute([$usuario, $contrasenia, $email])) {
-        $stmt = null;
-        header("location: usuario-index.php");
-    } else {
-        echo "Something went wrong. Please try again later.";
+    if (isset($_POST['usuario'])){
+        $vars = parse_columns('usuario', $_POST);
+        $stmt = $pdo->prepare("INSERT INTO usuario (usuario,contrasenia,email) VALUES (?,?,?)");
+    
+        if ($stmt->execute([$usuario, $contrasenia, $email])) {
+            $stmt = null;
+            header("location: usuario-index.php");
+        } else {
+            echo "Something went wrong. Please try again later.";
+        }
     }
 }
 ?>
@@ -57,10 +58,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <section class="pt-5">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 mx-auto card m-3 p-3">
+            <div class="row">>
+                <?php
+                session_start();
+                    if (!isset($_SESSION["usuario"])) {
+                        echo '<div class="col-md-6 mx-auto card" style="background-color: rgb(250, 215, 227);">';
+                        echo '<div class="text-center">
+                                <img src="../../Assets/img/id-1_c-1.jpg" style="width: 400px;height: 300px;">
+                            </div>';    
+                    }else{
+                        echo '<div class="col-md-6 mx-auto card m-3 p-2">';
+                    }
+                ?>
                     <div class="page-header">
-                        <h2>Registro</h2>
+                        <h2 class="text-center">Registro</h2>
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <?php

@@ -1,8 +1,6 @@
-$a_carrito = [
-	1=>
-	[
-        'id_p' => 18,
-		'nombre'=> 'Aretes Brisa',
-		'precio' => '9.000,00',
-   ],
-];
+productos:[
+	{id:1,nombre:'Red de computadoras',pubdate:'2006-9',price:15.00,count:1},
+	{id:2,nombre:'sistema operativo',pubdate:'2016-9',price:20.00,count:1},
+	{id:3,nombre:'Programación JavaSE',pubdate:'2012-9',price:35.00,count:1},
+	{id:4,nombre:'Programación PHP',pubdate:'2010-9',price:42.00,count:1},
+]
