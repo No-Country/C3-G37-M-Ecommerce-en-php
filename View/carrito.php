@@ -1,50 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-<link rel="stylesheet" href="https://dert98.github.io/Porfolio/global.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<?php
+
+use LDAP\Result;
+
+$a_carrito = json_decode(file_get_contents('../Config/pcarrito.json'), true);
+
+if (isset($_POST['in_carrito'])) {
+    $id_p = $_POST['in_id'];
+    $id_n = $_POST['in_nombre'];
+    $id_pr = $_POST['in_precio'];
+    
+    array_push($a_carrito, array(
+        'id_p' => $id_p,
+        'nombre' => $id_n,
+        'precio' => $id_pr,
 
 
-<body>
-    <div id="app">
-        <div v-if="productos.length" class="text-center">
-            <h1 for="">Carrito de compras</h1>
-            <table class="">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Titulo del libro</th>
-                        <th>Precio</th>
-                        <th>Precio Total</th>
-                        <th>Cantidad</th>
-                        <th>operando</th>
-                    </tr>
-                </thead>
-                <tr v-for="(item,index) in productos">
-                    <td>{{item.id}}</td>
-                    <td>{{item.nombre}}</td>
-                    <td>{{item.price | showPrice}}</td>
-                    <td>{{preciototal}}</td>
-                    <td>
-                        <! - v-bind: disabled="item.count <= 1" Cuando es verdadero, el control puede interactuar, cuando es falso, ya no puede interactuar ->
-                            <button @click="decrement(index)" v-bind:disabled="item.count<=1">-</button>
-                            {{item.count}}
-                            <button @click="increment(index)">+</button>
-                    </td>
-                    <td><button @click="del(index)">Eliminar</button></td>
-                </tr>
-                <tbody></tbody>
-            </table>
-        </div>
-        <p>
-            <h3>Total a pagar es: {{sum}}</h3>
-        </p>
-        <p>
-            <label>la cantidad de productos es: {{cantp}}</label>
-        </p>
-        <p>
-            <label>la cantidad de productos es totales es: {{cantpb}}</label>
-        </p>
-        <h2 v-else>El Carro de Compras está Vacío</h2>
-    </div>
-    <script src="../Assets/js/app.js"></script>
+    ));
+    // ahora pisamos el producto y lo metemos en el json de carrito
+    file_put_contents('../Config/pcarrito.json', json_encode($a_carrito));
+
+
+    }
+    header("Location: ../view/mostrarcarrito.php");
+?>

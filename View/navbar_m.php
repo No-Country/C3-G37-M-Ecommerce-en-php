@@ -27,7 +27,11 @@
                               <a class="nav-link" href="../Model/app/usuario-create.php">Registrarse</a>
                           </li>';
                     }
+                    $carrito = json_decode(file_get_contents('../Config/pcarrito.json'), true);
+                    $cantPro= count($carrito);
+                    echo 'cant Productos: '.$cantPro;
                 ?>
+                
                </ul>
            </div>
        </div>

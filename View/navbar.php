@@ -28,6 +28,9 @@
                             </li>
                             </p>';
                 }
+                $carrito = json_decode(file_get_contents('Config/pcarrito.json'), true);
+                    $cantPro= count($carrito);
+                    echo 'cant Productos: '.$cantPro;
                 ?>
             </ul>
         </div>

@@ -44,8 +44,8 @@
                 </p>
                 <p class"h3 t3"><label class="precio">Precio: $' . $pro->precio . ' </label></p>
                 <p>
-                <a href="View/prod-individual.php?idp=' . $pro->id_producto . '" class="btn btn-primary">Detalle</a>
-                <a href="View/prod-individual.php?idp=' . $pro->id_producto . '" class="btn btn-success">Añadir carrito</a> 
+                <a href="view/prod-individual.php?idp=' . $pro->id_producto . '" class="btn btn-primary">Detalle</a>
+                <a href="view/prod-individual.php?idp='.$pro->id_producto.'" class="btn btn-success ">Comprar</a>
                 </p>
             </div>
         </div>';
