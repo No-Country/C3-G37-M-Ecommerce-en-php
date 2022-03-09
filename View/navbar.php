@@ -30,7 +30,7 @@
                 }
                 $carrito = json_decode(file_get_contents('Config/pcarrito.json'), true);
                     $cantPro= count($carrito);
-                    echo 'cant Productos: '.$cantPro;
+                    echo '<a href="view/mostrarcarrito.php">Cant Productos: '.$cantPro.'</a>';
                 ?>
             </ul>
         </div>

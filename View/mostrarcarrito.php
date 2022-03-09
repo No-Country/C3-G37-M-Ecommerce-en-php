@@ -4,49 +4,59 @@ use LDAP\Result;
 
 require('head.php');
 require_once('navbar_m.php');
-
-$a_carrito = json_decode(file_get_contents('../Config/pcarrito.json'), true);
-if (isset($_POST['in_carrito'])) {
-    $id_p = $_POST['in_id'];
-    $id_n = $_POST['in_nombre'];
-    $id_pr = $_POST['in_precio'];
-
-    array_push($a_carrito, array(
-        'id_p' => $id_p,
-        'nombre' => $id_n,
-        'precio' => $id_pr,
-    ));
-    // ahora pisamos el producto y lo metemos en el json de carrito
-    file_put_contents('../Config/pcarrito.json', json_encode($a_carrito));
-}
-int: 
-$contador = 0;
-foreach ($a_carrito as $a_carritos) {
-    $pr_id = $a_carritos['id_p'];
-    $pr_no = $a_carritos['nombre'];
-    $pr_pr = $a_carritos['precio'];
-
-
-    if ($a_carritos['id_p'] == $pr_id) {
+$carro = json_decode(file_get_contents('../Config/pcarrito.json'), true);
 ?>
-        <div class="col-12 col-m-5 col-lg-4">
-            <div class="card mb-4">
-                <div class="card-body">
-
-                    <h5 class="card-text"><?php echo  $pr_no ?> </h5>
-                    <p class="card-text "><?php echo  $pr_id ?></p>
-                    <p class="card-text precio"><?php echo  $pr_pr ?></p>
-                </div>
-            </div>
-        </div>
-<?php
-
+<table class="table">
+    <thead>
+        <tr>
+            <th scope='col'>S/N</th>
+            <th scope='col'>ID</th>
+            <th scope='col'>Color</th>
+            <th scope='col'>Precio por c/u</th>
+            <th scope='col'>Cantidad</th>
+            <th scope='col'>precio total</th>
+            <th scope='col'>operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+    $id= 1;
+    foreach ($carro as $producto) {
+        $pr_id = $producto['id_p'];
+        $pr_no = $producto['nombre'];
+        $pr_pr = $producto['precio'];
+        $pr_ca = $producto['cantidad'];
+        echo '
+        <tr class="mt-1">
+            <td>
+                <p class="card-text">'.$id.'</p>
+            </td>
+            <td>
+                <p class="card-text">'.$pr_id.'</p>
+            </td>
+            <td>
+                <h5 class="card-text">'.$pr_no.'</h5>
+            </td>
+            <td>
+                <p class="card-text precio">$'.$pr_pr.'</p>
+            </td>
+            <td>
+                <p class="card-text precio">'.$pr_ca.'</p>
+            </td>
+            <td>
+                <p class="card-text preciot">$'.$pr_pr*$pr_ca.'</p>
+            </td>
+            <td>                              
+            <a href="carrito.php?id='.$id.'&accion=r" class="btn btn-primary">-</a>
+            <a href="carrito.php?id='.$id.'&accion=s" class="btn btn-primary">+</a>
+            <a href="carrito.php?id='.$id.'&accion=e" class="btn btn-primary">Eliminar</a>';
+            $id++;
     }
-    $contador++;
-}
-echo "Cantidad de productos: " . $contador;
-
-
-
+    ?>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<?php
 require_once("footer.php");
 ?>
