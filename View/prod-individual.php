@@ -12,8 +12,6 @@
     ?>
 
 
-
-
     <title>Document</title>
 </head>
 
@@ -36,11 +34,11 @@
             $nomimg = $nomimg1 . $nomimg2;
             ?>
             <div class='row cuadro'>
-                <div class='col-8 col-md-4 col-lg-6 text-center'>
+                <div class='col-8 col-md-10 col-lg-6 text-center '>
                     <img src=<?php echo "../Assets/img/$nomimg.jpg" ?> class="mt-3" style="width: 380px; height: 300px;">
                 </div>
 
-                <div class='col-8 col-md-4 col-lg-6'>
+                <div class='col-8 col-md-10 col-lg-6'>
                     <h4 id='tprod'><?php echo  $pro->nombre ?></h4>
                     <table class='table table-bordered mt-3'>
                         <thead>
@@ -61,19 +59,11 @@
 
                     <p class='precio text-end h2'>$ <?php echo  $pro->precio ?></p>
                     <p>
-                        <label>Cantidad de productos</label>
-                        <select name="select">
-                            <option value="1" selected>1</option>
-                            <?php
-                            for ($i = 2; $i < 10; $i++) {
-                                echo '<option value="' . $i . '">' . $i . '</option>';
-                            }
-                            ?>
-                        </select>
+                        
                     </p>
                     <?php
                     if ($pro->precio % 2 == 0) {
-                        echo '<label for="" class="text-danger">Oferta</label>';
+                       
                     }
 
                     ?> <form action="carrito.php" method="post">

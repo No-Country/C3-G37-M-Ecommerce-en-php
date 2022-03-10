@@ -1,69 +1,80 @@
 <?php
 require('head.php');
 require_once('navbar_m.php');
+
+
+$a_contacto = json_decode(file_get_contents('../Config/contacto.json'), true);
+if(isset($_POST["in_contacto"])){
+$nombre = $_POST["in_nombre"];
+$apellido = $_POST["in_apellido"];
+$email = $_POST["in_mail"];
+$tel = $_POST["in_tel"];
+$localidad = $_POST["in_localidad"];
+$ciudad = $_POST["in_ciudad"];
+$comentario = $_POST["in_comentario"];
+array_push($a_contacto, array(
+    'nombre' => $nombre,
+    'apellido' => $apellido,
+    'email' => $email,
+    'telefono' => $tel,
+    'localidad' => $localidad,
+    'ciudad' => $ciudad,
+    'comentario' => $comentario,
+));
+// ahora pisamos el producto y lo metemos en el json de carrito
+file_put_contents('../Config/contacto.json', json_encode($a_contacto));
+}
 ?>
-<main>
+<main class="">
     <section id="contacto">
 
-
-
-        <form action="" method=get>
-            <h1>Contacto</h1>
+        <form action="contacto.php" method=post>
+            <h1 class="contacto">Contacto</h1>
 
 
             <div class="row">
 
-
-                <div class="form-group col-10 col-md-5 col-lg-6">
-                    <p> <input type="text" name="in_nombre" class="form-control" placeholder="Nombre" value=<?php
-                                                                                                            if (isset($nombre)) echo $nombre ?>></input></p>
+                <div class="form-group col-8 col-md-5 col-lg-6">
+                <label for="validationDefault01" class="form-label"></label>
+                    <p> <input type="text" name="in_nombre" class="form-control" placeholder="Nombre" id="validationDefault01" value="" required ></input> <?php ?></p>
                 </div>
 
 
 
                 <div class="form-group col-10 col-md-5 col-lg-6">
-                    <p> <input type="text" name="in_apellido" class="form-control" placeholder="Apellido" value=<?php
-                                                                                                                if (isset($apellido)) echo $apellido ?>></input></p>
+                <label for="validationDefault02" class="form-label"></label>
+                    <p> <input type="text" name="in_apellido" class="form-control" placeholder="Apellido" value="" id="validationDefault02"  required></input></p>
                 </div>
 
             </div>
-
-
-
-
-
             <div class="row">
 
 
                 <div class="form-group col-10 col-md-5 col-lg-6">
-                    <p> <input type=email name=in_mail class=form-control placeholder=Email value=<?php
-                                                                                                    if (isset($mail)) echo $mail ?>></input></p>
+                <label  id="inputGroupPrepend2" class="form-label"></label>
+                    <p> <input type=email name=in_mail class=form-control placeholder=Email value="<?php if (isset($mail)) echo $mail ?>" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required></input></p>
                 </div>
 
 
 
                 <div class="form-group col-10 col-md-5 col-lg-6">
-                    <p> <input type=text name=in_tel class=form-control placeholder=Telefono value=<?php
-                                                                                                    if (isset($tel)) echo $tel ?>></input></p>
+                <label for="validationDefault05" class="form-label"></label>
+                    <p> <input type=number name=in_tel class=form-control placeholder=Telefono value="<?php if (isset($tel)) echo $tel ?>" id="validationDefault05" required></input></p>
                 </div>
 
             </div>
 
             <div class=row>
-
-                <!--
-    MODIFICACION PARA EL FINAL
-    Agregamos dos campos al formulario de contacto -->
-
                 <div class="form-group col-10 col-md-5 col-lg-6">
-                    <p> <input type=text name=in_localidad class=form-control placeholder=Localidad value=<?php if (isset($localidad)) echo $localidad ?>></input></p>
+                <label for="validationDefault03" class="form-label"></label>
+                    <p> <input type=text name=in_localidad class=form-control placeholder=Localidad value="<?php if (isset($localidad)) echo $localidad ?>" id="validationDefault03" required></input></p>
                 </div>
                 <div class="form-group col-10 col-md-5 col-lg-6">
-                    <p> <input type=text name=in_ciudad class=form-control placeholder=Ciudad value=<?php if (isset($ciudad)) echo $ciudad ?>></input></p>
+                <label for="validationDefault04" class="form-label"></label>
+                    <p> <input type=text name=in_ciudad class=form-control placeholder=Ciudad value="<?php if (isset($ciudad)) echo $ciudad ?>" id="validationDefault04" required></input></p>
                 </div>
             </div>
 
-            <!-- Fin de modificacion -->
 
             <!-- estas son las áreas, que no van en el form 
             <div id='valor' class='form-grup col-8 col-md-10 col-lg-12'>
@@ -86,14 +97,14 @@ require_once('navbar_m.php');
 
 
             <div class="form-group col-7 col-md-9 col-lg-12">
-
-                <p><textarea class=form-control id=exampleFormControlTextarea1 name=in_comentario placeholder="Dejá tu comentario" rows=3 value=<?php if (isset($comentario)) echo $comentario ?>></textarea></p>
+            <label for="validationDefault06" class="form-label"></label>
+                <p><textarea class=form-control id=exampleFormControlTextarea1 name=in_comentario placeholder="Si tenes algún comentario" rows=3 value="<?php if (isset($comentario)) echo $comentario ?>"  id="validationDefault06" required></textarea></p>
 
             </div>
 
 
 
-            <div class="form-group col-8 col-md-10 col-lg-12">
+            <div class="form-group col-8 col-md-10 col-lg-12 ">
                 <input type=submit class="btn botonenviar" name=in_contacto>
             </div>
 
@@ -136,9 +147,9 @@ require_once('navbar_m.php');
             <div class="col-7 col-md-9 col-lg-12">
                 <div class="mt-5">
                     <ul class="redes">
-                        <li><a href="https://www.facebook.com/"><img src="../Assets/img/icon/facebook.png" height="35"></a></li>
-                        <li><a href="https://www.instagram.com/"><img src="../Assets/img/icon/instagram.png" height="35"></a></li>
-                        <li><a href="https://twitter.com/?lang=es"><img src="../Assets/img/icon/twitter.png" height="35"></a></li>
+                        <li><a href="http://www.instagram.com/" target="new"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="http://www.facebook.com/" target="new"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="http://www.twitter.com/" target="new"><i class="fab fa-twitter"></i></a></li>
                     </ul>
 
                 </div>

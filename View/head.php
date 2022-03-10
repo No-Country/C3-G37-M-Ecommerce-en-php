@@ -1,5 +1,6 @@
 <head>
 	<meta charset="utf-8">
+	<script src="https://kit.fontawesome.com/acc76f3a88.js" crossorigin="anonymous"></script>
 	<title>Joyeria Zb</title>
 	<link rel="stylesheet" href="Assets/css/estilo.css">
 	<link rel="stylesheet" href="../Assets/css/estilo.css">
