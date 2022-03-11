@@ -62,9 +62,9 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")) {
                 <?php
                 session_start();
                     if (!isset($_SESSION["usuario"])) {
-                        echo '<div class="col-md-6 mx-auto card" style="background-color: rgb(250, 215, 227);">';
+                        echo '<div class="col-10 col-md-6 col-lg-6 mx-auto card mb-5 p-4" style="background-color: rgb(250, 215, 227);">';
                         echo '<div class="text-center">
-                                <img src="../../Assets/img/id-1_c-1.jpg" style="width: 400px;height: 300px;">
+                                <img src="../../Assets/img/id-1_c-1.jpg" class="img-fluid" style="width: 400px;height: 300px;">
                             </div>';    
                     }else{
                         echo '<div class="col-md-6 mx-auto card m-3 p-2">';

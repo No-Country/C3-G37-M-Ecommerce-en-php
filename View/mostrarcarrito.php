@@ -7,7 +7,7 @@ require_once('navbar_m.php');
 $carro = json_decode(file_get_contents('../Config/pcarrito.json'), true);
 ?>
 <div class="row">
-    <div class="col-12 col-md-12 col-lg-12">
+    <div class="col-12 col-md-12 col-lg-12 m-5">
         <table class="table">
             <thead>
                 <tr>
@@ -22,45 +22,49 @@ $carro = json_decode(file_get_contents('../Config/pcarrito.json'), true);
             </thead>
             <tbody>
                 <?php
-                $id = 1;
-                foreach ($carro as $producto) {
-                    $pr_id = $producto['id_p'];
-                    $pr_no = $producto['nombre'];
-                    $pr_pr = $producto['precio'];
-                    $pr_ca = $producto['cantidad'];
-                    echo '
-        <tr class="mt-1">
-            <td>
-                <p class="card-text">' . $id . '</p>
-            </td>
-            <td>
-                <p class="card-text">' . $pr_id . '</p>
-            </td>
-            <td>
-                <h5 class="card-text">' . $pr_no . '</h5>
-            </td>
-            <td>
-                <p class="card-text precio">$' . $pr_pr . '</p>
-            </td>
-            <td>
-                <p class="card-text precio">' . $pr_ca . '</p>
-            </td>
-            <td>
-                <p class="card-text preciot">$' . $pr_pr * $pr_ca . '</p>
-            </td>
-            <td>                              
-            <a href="carrito.php?id=' . $id . '&accion=r" class="btn btn-primary">-</a>
-            <a href="carrito.php?id=' . $id . '&accion=s" class="btn btn-primary">+</a>
-            <a href="carrito.php?id=' . $id . '&accion=e" class="btn btn-primary">Eliminar</a>';
-                    $id++;
-                }
+                if (isset($_SESSION["usuario"])) {
+                    $id = 1;
+                    foreach ($carro as $producto) {
+                        $pr_id = $producto['id_p'];
+                        $pr_no = $producto['nombre'];
+                        $pr_pr = $producto['precio'];
+                        $pr_ca = $producto['cantidad'];
+                        echo '<tr class="mt-1">
+                    <td>
+                        <p class="card-text">' . $id . '</p>
+                    </td>
+                    <td>
+                        <p class="card-text">' . $pr_id . '</p>
+                    </td>
+                    <td>
+                        <h5 class="card-text">' . $pr_no . '</h5>
+                    </td>
+                    <td>
+                        <p class="card-text precio">$' . $pr_pr . '</p>
+                    </td>
+                    <td>
+                        <p class="card-text precio">' . $pr_ca . '</p>
+                    </td>
+                    <td>
+                        <p class="card-text preciot">$' . $pr_pr * $pr_ca . '</p>
+                    </td>
+                    <td>                              
+                    <a href="carrito.php?id=' . $id . '&accion=r" class="btn btn-primary">-</a>
+                    <a href="carrito.php?id=' . $id . '&accion=s" class="btn btn-primary">+</a>
+                    <a href="carrito.php?id=' . $id . '&accion=e" class="btn btn-primary">Eliminar</a>';
+                            $id++;
+                        }
+                };
                 ?>
                 </td>
                 </tr>
             </tbody>
         </table>
+        <div>
+           <a href="checkout.php"><button class="btn btn-primary">Continuar compra</button></a> 
+        </div>
     </div>
 </div>
 <?php
-require_once("footer.php");
+require_once("footer_m.php");
 ?>

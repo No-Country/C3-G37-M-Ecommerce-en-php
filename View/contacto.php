@@ -34,7 +34,7 @@ file_put_contents('../Config/contacto.json', json_encode($a_contacto));
 
             <div class="row">
 
-                <div class="form-group col-8 col-md-5 col-lg-6">
+                <div class="form-group col-10 col-md-5 col-lg-6">
                 <label for="validationDefault01" class="form-label"></label>
                     <p> <input type="text" name="in_nombre" class="form-control" placeholder="Nombre" id="validationDefault01" value="" required ></input> <?php ?></p>
                 </div>
@@ -108,28 +108,11 @@ file_put_contents('../Config/contacto.json', json_encode($a_contacto));
                 <input type=submit class="btn botonenviar" name=in_contacto>
             </div>
 
-            <?php
-            /*  echo "<hr>";
-            include("salida2.php");
-            */ ?>
+           
 
         </form>
 
-        <!-- MODIFICACION PARA EL FINAL
-            Agregar para subir archivo-->
-
-        <?php
-        if (isset($_FILES) && !empty($_FILES)) {
-            $arch_tmp = $_FILES['in_archivo']['tmp_name'];
-            $arch_final = '../archivos/' . $_FILES['in_archivo']['name'];
-
-            move_uploaded_file($arch_tmp, $arch_final);
-        }
-        ?>
-
-
-
-        <!-- FIN DE MODIFICACION-->
+      
 
 
         <div class="row mapa">
@@ -164,7 +147,7 @@ file_put_contents('../Config/contacto.json', json_encode($a_contacto));
 
 </main>
 <?php
-require_once('footer.php');
+require_once('footer_m.php');
 ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

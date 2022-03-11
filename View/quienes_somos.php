@@ -64,5 +64,5 @@ require_once('navbar_m.php');
 
 
 <?php
-require('footer.php');
+require('footer_m.php');
 ?>

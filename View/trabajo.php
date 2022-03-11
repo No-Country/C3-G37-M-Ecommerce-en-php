@@ -141,5 +141,5 @@ file_put_contents('../Config/trabajo.json', json_encode($a_trabajo));
 
 
 <?php
-require('footer.php');
+require('footer_m.php');
 ?>
